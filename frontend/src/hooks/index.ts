@@ -1,0 +1,1 @@
+export {SubmitVote} from "./Vote"

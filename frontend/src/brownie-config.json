@@ -1,0 +1,1 @@
+{"dotenv": ".env", "wallets": {"signing_key": "${PRIVATE_KEY}"}, "networks": {"default": "development", "rinkeby": {"verify": true}, "development": {"verify": false}, "ganache-local": {"verify": false}}}
