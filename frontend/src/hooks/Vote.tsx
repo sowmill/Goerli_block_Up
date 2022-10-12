@@ -1,19 +1,19 @@
 import { useContractFunction } from "@usedapp/core"
+import { Contract } from "@usedapp/core/node_modules/@ethersproject/contracts"
 import { utils, ethers } from "ethers"
-import { Contract } from "@ethersproject/contracts"
 import { InfuraProvider } from "@ethersproject/providers"
 import electionabi from "../chain-info/contracts/Election.json"
 import networkMapping from "../chain-info/deployments/map.json"
 
 
 
-const network = "rinkeby"
-var provider = new InfuraProvider(network, "7bbca922ebeb41d8bb58f2d4b1f2820c")
+const network = "goerli"
+var provider = new InfuraProvider(network, "cbd604457ebf4faeb5dce9beecd2958f")
 //var provider= new EtherscanProvider(network, "2WY3GD6VXHKNV1IHEEV8P6IMD9AFV6KIU4");
 
 export const SubmitVote = () => {
     const { abi } = electionabi
-    const election_deployed_address = networkMapping["4"]["Election"][0]
+    const election_deployed_address = networkMapping["5"]["Election"][0]
     const electioninterface = new utils.Interface(abi)
     const electioncontract = new Contract(election_deployed_address, electioninterface, provider)
 

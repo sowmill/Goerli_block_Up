@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <DAppProvider config={{
-        supportedChains: [ChainId.Rinkeby],
+        supportedChains: [ChainId.Goerli],
         notifications: {
           expirationPeriod: 1000,
           checkInterval: 1000

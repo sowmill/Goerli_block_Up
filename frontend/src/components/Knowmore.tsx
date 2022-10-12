@@ -1,7 +1,6 @@
 import { Box } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core';
 import { useEthers } from "@usedapp/core"
-import { useState } from "react"
 import networkMapping from "../chain-info/deployments/map.json"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -26,16 +25,12 @@ const useStyles = makeStyles((theme) => ({
 
 export const Knowmore = () => {
     const classes = useStyles()
-    const { account, activateBrowserWallet, deactivate } = useEthers()
-    var [add, setadd] = useState<string | null | undefined>("notconnected.")
+    const { account } = useEthers()
     const isConnected = account !== undefined
-    const election_deployed_address = networkMapping["4"]["Election"][0]
 
-    const Handleupdate = () => {
-        activateBrowserWallet()
-        setadd(account)
+    const election_deployed_address = networkMapping["5"]["Election"][0]
 
-    }
+
     return (
         <>
             <video autoPlay loop width="900" height="350" >
@@ -44,7 +39,7 @@ export const Knowmore = () => {
             </video>
             <Box className={classes.last} sx={{ height: 650, width: 620 }}>
 
-                <Accordion onChange={Handleupdate}>
+                <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
@@ -53,12 +48,12 @@ export const Knowmore = () => {
                         <h2>Contract Address:</h2>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography sx={{  width: 590 }}>
+                        <Typography sx={{ width: 590 }}>
                             {election_deployed_address}
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion onChange={Handleupdate}>
+                <Accordion >
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel2a-content"
@@ -67,9 +62,12 @@ export const Knowmore = () => {
                         <h2>Account Address:</h2>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography sx={{ width: 590 }}>
-                            {add}
-                        </Typography>
+                        {isConnected ? (<Typography sx={{ width: 590 }}>
+                            {account}
+                        </Typography>) : (<Typography sx={{ width: 590 }}>
+                            {"Not Connected."}
+                        </Typography>)}
+
                     </AccordionDetails>
                 </Accordion>
                 <Accordion >
@@ -82,7 +80,7 @@ export const Knowmore = () => {
                     </AccordionSummary>
                     <AccordionDetails >
                         <h2 >
-                        You can check contract details by copy-pasting the contract address <a href="https://rinkeby.etherscan.io/" target={"_blank"} rel="noreferrer noopener">here.</a>
+                            You can check contract details by copy-pasting the contract address <a href="https://goerli.etherscan.io/" target={"_blank"} rel="noreferrer noopener">here.</a>
                         </h2>
                     </AccordionDetails>
                 </Accordion>

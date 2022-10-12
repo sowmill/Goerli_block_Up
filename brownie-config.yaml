@@ -3,7 +3,7 @@ wallets:
   signing_key: ${PRIVATE_KEY}
 networks:
   default: development
-  rinkeby:
+  goerli:
     verify: True
   development:
     verify: False

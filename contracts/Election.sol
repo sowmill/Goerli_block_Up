@@ -17,6 +17,7 @@ contract Election {
     uint256 public Candidate_count;
 
     constructor() {
+    
         addCandidate("Devadas Aggarwal", "Bharatiya Janata Party");
         addCandidate("Pallav Pandit", "Indian National Congress");
         addCandidate("Harish Khurana", "Nationalist Congress Party");
@@ -48,6 +49,7 @@ contract Election {
 
     //for frontend
     function viewvotes() public view returns (uint256[] memory) {
+        
         uint256[] memory ret = new uint256[](6);
         for (uint256 i = 0; i <= 5; i++) {
             ret[i] = Candidates[i + 1].vote_count;

@@ -5,16 +5,13 @@ import pytest
 
 
 def test_no_of_candidates():
-    #arrange
-    account=get_account()
-    #act
+    #arrange #act
     election=deploy_election()
     #assert
     assert election.Candidate_count() == 6
 
 def test_candidate_initialization():
 
-    account=get_account()
     election=deploy_election()
     #candidate 1
     candidate_list=[election.Candidates(1)]
@@ -75,7 +72,7 @@ def test_valid_candidate():
         tx=election.Vote(-1,{"from":account})
         tx.wait(1)
 
-#test for duoble voting
+#test for double voting
 def test_valid_vote():
     
     if network.show_active() not in LOCAL_BLOCKCHAIN_ENVIRONMENTS:

@@ -57,7 +57,7 @@ export const Home = () => {
 
                                 onClick={HandleChange}
                             >
-                                caste vote
+                                cast vote
                             </Button>
                         </Link>
                     </h1>
